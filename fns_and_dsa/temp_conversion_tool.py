@@ -13,25 +13,20 @@ def convert_to_fahrenheit(celsius):
     return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
 def main():
-    print("Temperature Conversion Tool")
-    print("1. Convert Celsius to Fahrenheit")
-    print("2. Convert Fahrenheit to Celsius")
-
-    choice = input("Choose an option (1 or 2): ").strip()
-
     try:
-        if choice == "1":
-            celsius = float(input("Enter temperature in Celsius: "))
-            fahrenheit = convert_to_fahrenheit(celsius)
-            print(f"{celsius}°C = {fahrenheit:.2f}°F")
-        elif choice == "2":
-            fahrenheit = float(input("Enter temperature in Fahrenheit: "))
-            celsius = convert_to_celsius(fahrenheit)
-            print(f"{fahrenheit}°F = {celsius:.2f}°C")
+        temp = float(input("Enter the temperature to convert: "))
+        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
+
+        if unit == "C":
+            converted = convert_to_fahrenheit(temp)
+            print(f"{temp}°C is {converted}°F")
+        elif unit == "F":
+            converted = convert_to_celsius(temp)
+            print(f"{temp}°F is {converted}°C")
         else:
-            print("Invalid choice! Please enter 1 or 2.")
+            print("Invalid unit. Please enter C or F.")
     except ValueError:
-        print("Invalid input! Please enter a number.")
+        print("Invalid temperature. Please enter a numeric value.")
 
 if __name__ == "__main__":
     main()
